@@ -41,7 +41,7 @@ const questions = [
     },
     {
         id: 5,
-        text: "Já sentiu dores ou tensão em alguma dessas regiões?",
+        text: "Já sentiu dores ou tensão em alguma dessas regiões? (Selecione todas que se aplicam)",
         type: "multiple",
         options: [
             "Lombar",
@@ -96,12 +96,6 @@ const headerDesc = document.querySelector('.quiz-header p');
 const appContainer = document.querySelector('.app-container');
 
 function init() {
-    // Check for saved state
-    if (localStorage.getItem('growMax_quiz_state') === 'plans') {
-        renderPlansScreen();
-        return;
-    }
-
     renderStep();
 
     btnNext.addEventListener('click', () => {
@@ -371,7 +365,7 @@ function renderResultScreen() {
             <div class="locked-text">
                 0 cm de ${potentialGain} cm desbloqueados
             </div>
-            <button class="btn-cta-start" onclick="renderPlansScreen()">
+            <button class="btn-cta-start" onclick="window.location.href='https://oferta-temporaria.vercel.app/'">
                 INICIAR MEU CRESCIMENTO
             </button>
         </div>
@@ -469,8 +463,6 @@ function updateNextButtonState() {
 }
 
 function renderPlansScreen() {
-    // Save State
-    localStorage.setItem('growMax_quiz_state', 'plans');
 
     appContainer.classList.add('header-hidden');
     document.querySelector('.quiz-footer').classList.add('hidden'); // Ensure defaults are hidden
@@ -627,10 +619,7 @@ function renderPlansScreen() {
                 </a>
             </div>
 
-            <footer class="plans-footer">
-                <div>&copy; 2025 Grow Max. Todos os direitos reservados.</div>
-                <div style="font-weight: 600; color: #E5E7EB;">@growmaxofc</div>
-            </footer>
+
         </div>
     `;
 
